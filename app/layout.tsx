@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
+import { cn } from '@/lib/utils'
+import { Noto_Sans_Georgian } from 'next/font/google'
+const inter = Noto_Sans_Georgian({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +17,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={cn("relative h-full font-sans antialiased",
+      inter.className)}>
+        <main className='relative flex flex-col min-h-screen'>
+          <div className='flex-grow flex-1'>
+
+          {children}
+
+          </div>
+
+          </main>
+          </body>
     </html>
   )
 }
